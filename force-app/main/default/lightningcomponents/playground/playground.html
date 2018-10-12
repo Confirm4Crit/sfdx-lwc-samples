@@ -7,7 +7,7 @@
 </template> -->
 <template>
     <div class="slds-card">
-        <lightning-record-view-form record-id={recordId} object-api-name="Account">
+        <lightning-record-view-form record-id={recordId} object-api-name={accountObject}>
             <div class="slds-grid slds-wrap slds-p-around_small">
                 <div class="slds-col slds-size_1-of-1 slds-p-vertical_xx-small">
                     <div class="slds-media">
@@ -20,12 +20,12 @@
                     </div>
                 </div>
                 <div class="slds-col slds-size_2-of-4 slds-p-vertical_xx-small">
-                    <lightning-output-field field-name="Website"></lightning-output-field>
-                    <lightning-output-field field-name="Industry"></lightning-output-field>
+                    <lightning-output-field field-name={websiteField}></lightning-output-field>
+                    <lightning-output-field field-name={industryField}></lightning-output-field>
                 </div>
                 <div class="slds-col slds-size_2-of-4 slds-p-vertical_xx-small">
-                    <lightning-output-field field-name="AnnualRevenue"></lightning-output-field>
-                    <lightning-output-field field-name="OwnerId"></lightning-output-field>
+                    <lightning-output-field field-name={annualRevenueField}></lightning-output-field>
+                    <lightning-output-field field-name={ownerIdField}></lightning-output-field>
                 </div>
             </div>
         </lightning-record-view-form>
