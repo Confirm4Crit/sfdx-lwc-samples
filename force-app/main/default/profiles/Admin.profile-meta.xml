@@ -30,6 +30,10 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>playground_exercise</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>playground_finished</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
