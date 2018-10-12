@@ -1,7 +1,20 @@
-/* import items from the LWC framework */
-import { Element, api } from 'engine';
+/* Primitives from LWC framework */
+import { Element, api, wire } from 'engine';
+/* Object and field schema */
+import ACCOUNT_OBJECT from '@salesforce/schema/Account';
+import WEBSITE_FIELD from '@salesforce/schema/Account.Website';
+import INDUSTRY_FIELD from '@salesforce/schema/Account.Industry';
+import ANNUAL_REVENUE_FIELD from '@salesforce/schema/Account.AnnualRevenue';
+import OWNER_ID_FIELD from '@salesforce/schema/Account.OwnerId';
 
 export default class Playground extends Element {
     /** Id of record to display. */
     @api recordId;
+
+    /* Expose schema objects/fields to the template. */
+    accountObject = ACCOUNT_OBJECT;
+    websiteField = WEBSITE_FIELD;
+    industryField = INDUSTRY_FIELD;
+    annualRevenueField = ANNUAL_REVENUE_FIELD;
+    ownerIdField = OWNER_ID_FIELD;
 }
