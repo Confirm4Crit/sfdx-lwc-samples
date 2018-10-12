@@ -1,0 +1,51 @@
+<template>
+    <c-page_header header="Lightning Pages Integration"></c-page_header>
+
+    <div class="slds-grid">
+        <div class="slds-col slds-size_2-of-3">
+            <c-card header="Instructions">
+                <p class="slds-m-vertical_large">
+                    In this lesson, we add metadata to the component to expose it in Lightning App Builder. We then add it to the default account record home page in Lightning Experience.
+                </p>
+                <p class="slds-m-vertical_large">
+                    Lightning App Builder allows you to customize pages with clicks, not code. Custom components may be added to pages allowing for infinite customization. If you're not familiar with Lightning App Builder and Lightning pages, check out the <a target="_blank" href="https://help.salesforce.com/articleView?id=lightning_app_builder_overview.htm&type=5">Lightning App Builder documentation</a>.
+                </p>
+                <p class="slds-m-vertical_large">
+                        Every Lightning web components includes a metadata file declaring its type, version information, and whether it's accessible by other namespaces. The metadata file for the playground component, <strong>playground.js-meta.xml</strong>, looks like this.
+                    </p>
+                    <c-code>{codeStepZero}</c-code>
+                <p class="slds-m-vertical_large slds-text-title_caps">
+                    <span>Step 1</span>
+                </p>
+                <p class="slds-m-vertical_large">
+                    Update the metadata file to specify the component may be added to record home Lightning Pages (<code>lightning__RecordHome</code>) and can receive the active record Id (<code>lightning__HasRecordId</code>) via a <code>recordId</code> attribute. Replace the contents of <strong>playground.js-meta.xml</strong> with this.
+                </p>
+                <c-code input>{codeStepOne}</c-code>
+                <p class="slds-m-vertical_large slds-text-title_caps">
+                    <span>Step 2</span>
+                </p>
+                <div class="slds-m-vertical_large">
+                    To add the component to a Lightning Page, start by navigating to an account record home page (to save you time, here's the <c-link object-api-name="Account"  label="list of accounts"></c-link>). Once you're on the account record home page:
+                    <ol class="slds-list_ordered slds-m-top_small">
+                        <li>Click the Setup gear in the upper-right of Salesforce, and select <strong>Edit Page</strong>.</li>
+                        <li>In Lightning App Builder, add the playground component (it's at the bottom of the list under <i>Custom Components</i>) to the page canvas.</li>
+                        <li>Click <strong>Save</strong> and complete the activation wizard.</li>
+                        <li>Click <strong>Back</strong> to return to the new record home Lightning Page.</li>
+                    </ol>
+                </div>
+                <p class="slds-m-vertical_large">
+                    The account card component is now on the account record home page! Return to this page and proceed to the next lesson.
+                </p>
+                <div class="slds-m-vertical_large">
+                    <c-link tab-api-name="testing" label="Next Lesson" variant="button"></c-link>
+                </div>
+            </c-card>
+        </div>
+
+        <div class="slds-col slds-size_1-of-3 slds-p-left_small">
+            <c-card header="Playground">
+                <c-playground record-id={recordId}></c-playground>
+            </c-card>
+        </div>
+    </div>
+</template>

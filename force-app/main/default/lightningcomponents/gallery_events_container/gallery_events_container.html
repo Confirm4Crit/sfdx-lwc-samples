@@ -1,0 +1,22 @@
+<template>
+    <c-card header="Lightning Web Component Container" boundary>
+        <p>
+            This Lightning web component listens for event X (but not event Y) from its child component.
+        </p>
+
+        <ul class="slds-list_dotted slds-m-vertical_small">
+            <li>By default, events propagate up through the DOM tree. Enable the <strong>Stop propagation of Event X</strong> checkbox to stop event X from propagating.</li>
+            <li>Enable the <strong>Listen for Event Y</strong> checkbox to dynamically attach a listener for event Y. Disabling it detaches the listener.</li>
+        </ul>
+
+        <lightning-input type="checkbox" label="Stop propagation of Event X" onchange={handlePropagationXClick}></lightning-input>
+        <lightning-input type="checkbox" label="Listen for Event Y" onchange={handleListenClick}></lightning-input>
+        <br/>
+        <lightning-textarea disabled label="Events received by Lightning web component container" value={receivedEvents}></lightning-textarea>
+
+        <c-card header="Child Component" boundary>
+            <c-gallery_events_child oncustomeventx={handleCustomEvent}></c-gallery_events_child>
+        </c-card>
+
+    </c-card>
+</template>

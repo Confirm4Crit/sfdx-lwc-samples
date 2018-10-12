@@ -1,0 +1,3 @@
+:host lightning-button:not(:last-child){
+    margin-right: .5rem;
+}

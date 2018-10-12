@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`c-playground_finished renders c-playground_finished with recordId 1`] = `
+<c-playground_finished>
+  <div
+    class="slds-card"
+  >
+    <lightning-record-view-form>
+      <slot>
+        <div
+          class="slds-grid slds-wrap slds-p-around_small"
+        >
+          <div
+            class="slds-col slds-size_1-of-1 slds-p-vertical_xx-small"
+          >
+            <div
+              class="slds-media"
+            >
+              <div
+                class="slds-media__figure"
+              >
+                <lightning-avatar />
+              </div>
+              <div
+                class="slds-media__body"
+              >
+                <lightning-formatted-text
+                  class="slds-text-heading_large"
+                />
+                <lightning-button-icon
+                  class="slds-p-left_medium"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="slds-col slds-size_2-of-4 slds-p-vertical_xx-small"
+          >
+            <lightning-output-field />
+            <lightning-output-field />
+          </div>
+          <div
+            class="slds-col slds-size_2-of-4 slds-p-vertical_xx-small"
+          >
+            <lightning-output-field />
+            <lightning-output-field />
+          </div>
+        </div>
+      </slot>
+    </lightning-record-view-form>
+  </div>
+</c-playground_finished>
+`;
+
+exports[`c-playground_finished renders c-playground_finished without recordId specified 1`] = `
+<c-playground_finished>
+  <div
+    class="slds-card"
+  />
+</c-playground_finished>
+`;

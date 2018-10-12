@@ -1,0 +1,57 @@
+<template>
+    <c-page_header header="Using External Resources"></c-page_header>
+
+    <div class="slds-grid">
+        <div class="slds-col slds-size_2-of-3">
+            <c-card header="Instructions">
+                <p class="slds-m-vertical_large">
+                    External resources are a key element of customization. Use them to integrate images, leverage third-party libraries, and use custom labels. If you're not familiar with external resources check out the <a target="_blank" href="https://developer.salesforce.com/docs/atlas.en-us.pages.meta/pages/pages_resources.htm">static resources documentation</a> and <a target="_blank" href="https://help.salesforce.com/articleView?id=cl_about.htm&type=5">custom label documentation</a>.
+                </p>
+                <p class="slds-m-vertical_large">
+                    To demonstrate how to leverage an external resource in a Lightning web component, we'll change the avatar component to use a graphic image PNG file instead of the standard account icon.
+                </p>
+                <p class="slds-m-vertical_large slds-text-title_caps">
+                    <span>Step 1</span>
+                </p>
+                <p class="slds-m-vertical_large">
+                    Copy your external resource to the <a target="_blank" href={gitSource}><code>force-app/main/default/staticresources</code></a> folder. If you don't have an image, copy our <a target="_blank" href={gitSalesforceLogo}><code>salesforce_logo.resource</code></a> and rename it. The resource name can contain only underscores and alphanumeric characters, and must be unique in your org. It must begin with a letter, not include spaces, not end with an underscore, and not contain two consecutive underscores.
+                </p>
+                <p class="slds-m-vertical_large">
+                    Rename the resource to <code><i>filename</i>.resource</code>, and add a <code><i>filename</i>.resource-meta.xml</code> file to define the content type of the static resource. If you used our image above, here's the corresponding <a target="_blank" href={gitSalesforceLogoMetaXml}><code>salesforce_logo.resource-meta.xml</code></a>. To see the tags supported in the resources metadata file, see <a href="https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_staticresource.htm" target="_blank">StaticResource</a> in the Metadata API Developer Guide.
+                </p>
+                </p>
+                <c-code input>{codeStepOne}</c-code>
+                <p class="slds-m-vertical_large slds-text-title_caps">
+                    <span>Step 2</span>
+                </p>
+                <p class="slds-m-vertical_large">
+                    Import the resource at the top of <strong>playground.js</strong>.
+                </p>
+                <c-code input>{codeStepTwoA}</c-code>
+                <p class="slds-m-vertical_large">
+                    Create a getter for your static resource in the JavaScript class.
+                </p>
+                <c-code input>{codeStepTwoB}</c-code>
+                <p class="slds-m-vertical_large slds-text-title_caps">
+                    <span>Step 3</span>
+                </p>
+                <p class="slds-m-vertical_large">
+                    Update <strong>playground.html</strong> to specify the static resource as the <code>src</code> attribute of the existing <code>&lt;lightning-avatar&gt;</code>.
+                </p>
+                <c-code input>{codeStepThree}</c-code>
+                <p class="slds-m-vertical_large">
+                    The account summary card shows your external image as the avatar!
+                </p>
+                <div class="slds-m-vertical_large">
+                    <c-link tab-api-name="flexipage" label="Next Lesson" variant="button"></c-link>
+                </div>
+            </c-card>
+        </div>
+
+        <div class="slds-col slds-size_1-of-3 slds-p-left_small">
+            <c-card header="Playground">
+                <c-playground record-id={recordId}></c-playground>
+            </c-card>
+        </div>
+    </div>
+</template>

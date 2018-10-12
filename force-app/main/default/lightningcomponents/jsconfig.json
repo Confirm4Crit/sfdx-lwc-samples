@@ -1,0 +1,96 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "baseUrl": ".",
+        "paths": {
+            "c-account_creator": [
+                "account_creator/account_creator.js"
+            ],
+            "c-card": [
+                "card/card.js"
+            ],
+            "c-code": [
+                "code/code.js"
+            ],
+            "c-external_references": [
+                "external_references/external_references.js"
+            ],
+            "c-flexipage": [
+                "flexipage/flexipage.js"
+            ],
+            "c-gallery": [
+                "gallery/gallery.js"
+            ],
+            "c-gallery_apex": [
+                "gallery_apex/gallery_apex.js"
+            ],
+            "c-gallery_apex_detail": [
+                "gallery_apex_detail/gallery_apex_detail.js"
+            ],
+            "c-gallery_apex_master": [
+                "gallery_apex_master/gallery_apex_master.js"
+            ],
+            "c-gallery_combobox": [
+                "gallery_combobox/gallery_combobox.js"
+            ],
+            "c-gallery_datatable": [
+                "gallery_datatable/gallery_datatable.js"
+            ],
+            "c-gallery_events_child": [
+                "gallery_events_child/gallery_events_child.js"
+            ],
+            "c-gallery_events_container": [
+                "gallery_events_container/gallery_events_container.js"
+            ],
+            "c-gallery_lds_object_info": [
+                "gallery_lds_object_info/gallery_lds_object_info.js"
+            ],
+            "c-gallery_static_resources": [
+                "gallery_static_resources/gallery_static_resources.js"
+            ],
+            "c-lds": [
+                "lds/lds.js"
+            ],
+            "c-lds_record_ui": [
+                "lds_record_ui/lds_record_ui.js"
+            ],
+            "c-lightning_components": [
+                "lightning_components/lightning_components.js"
+            ],
+            "c-link": [
+                "link/link.js"
+            ],
+            "c-navigation": [
+                "navigation/navigation.js"
+            ],
+            "c-page_header": [
+                "page_header/page_header.js"
+            ],
+            "c-playground": [
+                "playground/playground.js"
+            ],
+            "c-playground_finished": [
+                "playground_finished/playground_finished.js"
+            ],
+            "c-playground_finished_container": [
+                "playground_finished_container/playground_finished_container.js"
+            ],
+            "c-testing": [
+                "testing/testing.js"
+            ],
+            "c-utils": [
+                "utils/utils.js"
+            ],
+            "c-welcome": [
+                "welcome/welcome.js"
+            ],
+            "c-lightning-record-view-form": [
+                "../../../test/jest-mocks/lightning-record-view-form/lightning-record-view-form.js"
+            ]
+        }
+    },
+    "include": [
+        "**/*",
+        "../../../../.sfdx/typings/lwc/**/*.d.ts"
+    ]
+}

@@ -1,0 +1,47 @@
+<template>
+    <c-page_header header="Navigating Using Standard and Custom Events"></c-page_header>
+
+    <div class="slds-grid">
+        <div class="slds-col slds-size_2-of-3">
+            <c-card header="Instructions">
+                <p class="slds-m-top_small">
+                    At this point, we've created a custom account component with data-bound Lightning web components. We've used Lightning Data Service to access record data. We used base components to provide a custom presentation of the data. Now let's use the LWC mixin version of <a target="_blank" href="https://developer.salesforce.com/docs/component-library/bundle/lightning:navigation/documentation"><code>lightning-navigation</code></a> to add an edit button.
+                </p>
+                <p class="slds-m-vertical_large slds-text-title_caps">
+                    <span>Step 1</span>
+                </p>
+                <p class="slds-m-vertical_large">
+                    Display the edit button by adding the following line to <strong>playground.html</strong> below the <code>lightning-formatted-text</code> tag.
+                </p>
+                <c-code input>{codeStepOne}</c-code>
+
+                <p class="slds-m-vertical_large slds-text-title_caps">
+                    <span>Step 2</span>
+                </p>
+                <p class="slds-m-vertical_large">
+                    Now let's implement the <code>navigateToEdit</code> method. Add the following import statement and modify the class declaration in  <strong>playground.js</strong>. A temporary workaround for mixins is also required.
+                </p>
+                <c-code input>{codeStepTwoA}</c-code>
+                <p class="slds-m-vertical_large">
+                    And add the following method to the class.
+                </p>
+                <c-code input>{codeStepTwoB}</c-code>
+                <p class="slds-m-vertical_large">
+                    We start by importing the <code>lightning-navigation</code> mixin. We then use it to generate a base class we extend: <code>extends NavigatonMixin(Element)</code>. The generated class includes methods related to navigation. In <code>navigateToEdit</code> we invoke one of those methods, <code>this[NavigationMixin.Navigate]</code>, to request navigation to the record edit page. A temporary workaround for mixins is also required.
+                </p>
+                <p class="slds-m-vertical_large">
+                    Push your changes and give it a try! You've built a data-bound Lightning web component with navigation. Well done!
+                </p>
+                <div class="slds-m-vertical_large">
+                    <c-link tab-api-name="external_references" label="Next Lesson" variant="button"></c-link>
+                </div>
+            </c-card>
+        </div>
+
+        <div class="slds-col slds-size_1-of-3 slds-p-left_small">
+            <c-card header="Playground">
+                <c-playground record-id={recordId}></c-playground>
+            </c-card>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,33 @@
+<template>
+    <div class="slds-card">
+        <template if:true={recordId}>
+            <lightning-record-view-form record-id={recordId} object-api-name={accountObject}>
+                <!-- SLDS classes to create a grid -->
+                <div class="slds-grid slds-wrap slds-p-around_small">
+                    <!-- First row uses a full-width column to display the Account name.  -->
+                    <div class="slds-col slds-size_1-of-1 slds-p-vertical_xx-small">
+                        <div class="slds-media">
+                            <div class="slds-media__figure">
+                                <!-- Alt text for accessibility -->
+                                <lightning-avatar variant="circle" src={logo} size="large" fallback-icon-name="standard:account" alternative-text={nameValue}></lightning-avatar>
+                            </div>
+                            <div class="slds-media__body">
+                                <lightning-formatted-text value={nameValue} class="slds-text-heading_large"></lightning-formatted-text>
+                                <lightning-button-icon onclick={navigateToEdit} icon-name="utility:edit" variant="bare" alternative-text="Edit" class="slds-p-left_medium"></lightning-button-icon>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Second row uses a two-column layout to display other Account fields.  -->
+                    <div class="slds-col slds-size_2-of-4 slds-p-vertical_xx-small">
+                        <lightning-output-field field-name={websiteField}></lightning-output-field>
+                        <lightning-output-field field-name={industryField}></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_2-of-4 slds-p-vertical_xx-small">
+                        <lightning-output-field field-name={annualRevenueField}></lightning-output-field>
+                        <lightning-output-field field-name={ownerIdField}></lightning-output-field>
+                    </div>
+                </div>
+            </lightning-record-view-form>
+        </template>
+    </div>
+</template>

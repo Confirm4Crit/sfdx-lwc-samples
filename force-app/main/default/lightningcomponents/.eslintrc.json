@@ -1,0 +1,20 @@
+{
+    "extends": "plugin:lwc/recommended",
+    "plugins": [
+        "lwc",
+        "webdriverio"
+    ],
+    "env": {
+        "webdriverio/wdio": true,
+        "mocha": true
+    },
+    "rules": {
+        "quotes": [
+            1,
+            "single",
+            {
+                "avoidEscape": true
+            }
+        ]
+    }
+}

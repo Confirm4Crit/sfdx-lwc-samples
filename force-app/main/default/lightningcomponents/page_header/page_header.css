@@ -1,0 +1,4 @@
+:host:not(.slds-slds-page-header_joined) {
+    display: block;
+    margin-bottom: .75rem;
+}

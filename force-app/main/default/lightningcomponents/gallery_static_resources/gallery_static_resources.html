@@ -1,0 +1,17 @@
+<template>
+    <c-card header="Static Resources">
+        <p class="slds-hyphenate slds-m-vertical_large">
+            This sample shows how to reference static resources and custom labels. See the source code at <a target="_blank" href={gitSource}><code>force-app/main/default/lightningcomponents/gallery_static_resources</code></a>.
+        </p>
+        <p class="slds-m-vertical_large">
+            The Salesforce logo is a static resource. The alt text is defined in a custom label.<br>
+            <br>
+            <img src={salesforceLogoUrl} alt={label.salesforceLogoDescription} width=100>
+        </p>
+        <p class="slds-m-vertical_large">
+            This image is nested in a static resource ZIP archive. The alt text is defined in a custom label.<br>
+            <br>
+            <img src={avatarUrl} alt={label.avatarDescription} width=70>
+        </p>
+    </c-card>
+</template>

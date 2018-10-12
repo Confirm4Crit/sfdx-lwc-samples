@@ -1,0 +1,11 @@
+<template>
+    <c-card header="Combobox and Lightning Data Service @wire(getPicklistValues)">
+        <p class="slds-hyphenate">
+            This sample shows <code>lightning-combobox</code> displaying the picklist values for the Account <code>Industry</code> field using <code>@wire(getPicklistValues)</code>. See the source code at <a target="_blank" href={gitSource}><code>force-app/main/default/lightningcomponents/gallery_combobox</code></a>.
+        </p>
+        <br>
+        <lightning-combobox label="Industry" placeholder="Choose Industry" value="new" onchange={handleComboboxChange} options={comboboxOptions}></lightning-combobox>
+        <br>
+        {status}
+    </c-card>
+</template>

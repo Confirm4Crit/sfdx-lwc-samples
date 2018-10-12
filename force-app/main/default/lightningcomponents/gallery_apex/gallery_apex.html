@@ -1,0 +1,24 @@
+<template>
+    <c-card header="Apex Access and @wire">
+        <p class="slds-hyphenate">
+            This sample shows data fetch and mutation with Apex. It works across multiple components using the same Apex method; the data layer keeps all components up-to-date. See the source code at <a target="_blank" href={gitSource}><code>force-app/main/default/lightningcomponents/gallery_apex</code></a>.
+        </p>
+        <br>
+
+        <template if:true={hasRecordId}>
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-2">
+                    <c-gallery_apex_master record-id={recordId}></c-gallery_apex_master>
+                </div>
+                <div class="slds-col slds-size_1-of-2 slds-p-left_small">
+                    <c-gallery_apex_detail record-id={recordId}></c-gallery_apex_detail>
+                </div>
+            </div>
+        </template>
+
+        <template if:false={hasRecordId}>
+            The sample requires an Account record. Use the form below to create one.
+            <c-account_creator onnewrecord={handleNewRecord}></c-account_creator>
+        </template>
+    </c-card>
+</template>

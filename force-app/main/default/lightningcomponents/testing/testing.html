@@ -1,0 +1,105 @@
+<template>
+    <c-page_header header="Testing"></c-page_header>
+
+    <div class="slds-grid">
+        <div class="slds-col slds-size_2-of-3">
+            <c-card header="Instructions">
+                <p class="slds-m-vertical_large">
+                    Automated tests are the best way to achieve predictable, repeatable assessments of the quality of your code. Writing automated tests for your Lightning web components gives you confidence that they work as designed, and allows you to evaluate the impact of changes like feature enhancements, refactoring, and new versions of third-party JavaScript libraries.
+                </p>
+
+                <p class="slds-m-vertical_large">
+                    <code>lts-jest</code> is already included in the project you setup and installed. These next steps will take you through writing your first test. We have a  <a href="https://org62.lightning.force.com/lightning/r/0D50M00003ninCKSAY/view" target="_blank">video walk-through</a> available in our Pilot Chatter group monthly webinar. The second half of the video goes in-depth on testing.
+                </p>
+
+                <p class="slds-m-vertical_large slds-text-title_caps">
+                    <span>Step 1</span>
+                </p>
+                <p class="slds-m-vertical_large">
+                    Start by ensuring you have the appropriate packages installed via npm. If you followed all the instructions this should be done but just in case run this:
+                </p>
+                <c-code input>{codeStepOne}</c-code>
+
+                <p class="slds-m-vertical_large slds-text-title_caps">
+                    <span>Step 2</span>
+                </p>
+                <p class="slds-m-vertical_large">
+                    When you run <code>lts-jest</code> it runs all the tests in your project. It searches within folders named <strong>__tests__</strong>. It also supports a "watch mode" where it monitors your project files for changes and runs only the impacted tests. This is a great way to see your progress in real-time. Run the following now in your terminal.
+                </p>
+                <c-code input>{codeStepTwo}</c-code>
+                <p class="slds-m-vertical_large">
+                    You will see the following output indicating <code>lts-jest</code> has discovered all tests and identified none need to be run. When we add new tests they'll be discovered and run.
+                </p>
+                <img src={ltsJestInitialUrl} alt="lts-jest output" width=400>
+
+                <p class="slds-m-vertical_large slds-text-title_caps">
+                    <span>Step 3</span>
+                </p>
+                <p class="slds-m-vertical_large">
+                    We provided an empty test file <strong>playground.test.js</strong> in the <strong>playground/__tests__/</strong> folder. Open that file and replace its contents with the following.
+                </p>
+                <c-code input>{codeStepThree}</c-code>
+                <p class="slds-m-vertical_large">
+                    Yikes, that's a lot of code! Don't worry, we'll explain the main sections throughout this exercise, starting with the basics here. There is some code required to get the test running that isn't explained in this section, but we'll discuss it later.
+                </p>
+                <p class="slds-m-vertical_large">
+                    The first thing you'll notice are the <code>import</code> statements at the top of the file. These statements pull in dependencies for our test, including the component we're currently testing. The first import, <code>&#123; createElement &#125; from 'engine'</code>, creates our component under test. We then import our playground component. Each test case creates the component and performs verifications against it. Note how we reference the component using the <code><i>namespace</i>-<i>componentname</i> format</code>.
+                </p>
+                <p class="slds-m-vertical_large">
+                    Let's skip to the <code>describe</code> block, which is where the test logic begins. <code>describe</code> blocks are used to group related tests. The <code>beforeEach</code> and <code>afterEach</code> functions are Jest lifecycle hooks that run before and after each test (refer to the <a href="https://facebook.github.io/jest/docs/en/api.html" target="_blank">Jest documentation</a> for more information). Finally, after all the setup, the <code>it</code> block contains our test case logic. The flow of the test is as follows:
+                </p>
+                <div>
+                    <ul class="slds-list_dotted">
+                        <li>Create the component under test with the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement" target="_blank"><code>createElement</code> API</a>.</li>
+                        <li>Set the component properties.</li>
+                        <li>Add the component to the DOM.</li>
+                        <li>Verify the avatar element's properties.</li>
+                    </ul>
+                </div>
+                <p class="slds-m-vertical_large">
+                    Once you save the updated <strong>playground.test.js</strong>, <code>lts-jest</code> will detect the change and runs the tests. Check your terminal window for the results. Notice that we did <b>not</b> need to push our changes to the scratch org! These unit tests run locally, and indeed, test artifacts are excluded from being pushed to your org.
+                </p>
+
+                <p class="slds-m-vertical_large slds-text-title_caps">
+                    <span>Step 4</span>
+                </p>
+                <p class="slds-m-vertical_large">
+                    Now let's look at how we can control data through <code>@wire</code> in the test. We've added some mock data in <a target="_blank" href={gitJsonData}>force-app/main/default/lightningcomponents/playground/__tests__/data/record-account.json</a>.
+                </p>
+                <p class="slds-m-vertical_large">
+                    To use this data in the test, we'll <code>require()</code> the JSON file and then pass the data through our <code>@wire</code> test utility. Add the following lines above the first <code>describe</code> block:
+                </p>
+                <c-code input>{codeStepFourA}</c-code>
+                <p class="slds-m-vertical_large">
+                    And this code after the <code>it('sets lightning-avatar source')</code> block from above.
+                </p>
+                <c-code input>{codeStepFourB}</c-code>
+                <p class="slds-m-vertical_large">
+                    The key line from this test is <code>getRecordWireAdapter.emit(mockGetRecord)</code>. This code is where we use the <code>@wire</code> test utility to feed in our mock record data. We then verify the data is correctly passed to <code>lightning-formatted-text</code> component.
+                </p>
+                <p class="slds-m-vertical_large">
+                   There are more unit tests in <a href={gitPlaygroundFinished} target="_blank">force-app/main/default/lightningcomponents/playground_finished/__tests__/playground_finished.test.js</a>. We recommend reviewing them.
+                </p>
+                <p class="slds-m-vertical_large">
+                    Lightning Testing Service offers multiple strategies for testing your Lightning web components. In this exercise we focused on the unit testing tool called <strong>lts-jest</strong>. This tool simplifies unit testing using the <a href="https://facebook.github.io/jest/" target="_blank">Jest testing framework</a>. <strong>lts-jest</strong> takes care of all necessary configuration.
+                </p>
+
+                <p class="slds-m-vertical_large">
+                    Congratulations! You've just written your first Lightning Web Component and automated unit tests. Want to view more sample components? Check out these resources:
+                </p>
+                <div class="slds-m-vertical_large">
+                    <ul class="slds-list_dotted">
+                        <li>Our version of the <c-link tab-api-name="playground_finished" label="playground component"></c-link>, including unit tests</li>
+                        <li>A <c-link tab-api-name="gallery" label="gallery"></c-link> of Lightning web component samples</li>
+                    </ul>
+                </div>
+            </c-card>
+        </div>
+
+        <div class="slds-col slds-size_1-of-3 slds-p-left_small">
+            <c-card header="Playground">
+                <c-playground record-id={recordId}></c-playground>
+            </c-card>
+        </div>
+    </div>
+</template>

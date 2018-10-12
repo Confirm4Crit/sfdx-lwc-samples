@@ -1,0 +1,55 @@
+<template>
+    <c-card header="Lightning Data Service wire(getObjectInfo)">
+        <p class="slds-hyphenate">
+            This sample shows the Lightning Data Service <code>@wire(getObjectInfo)</code>. This corresponds to the <a target="_blank" href="https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_resources_object_info.htm"><code>object-info</code> resource</a> of the <a target="_blank" href="https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm">User Interface API</a>.
+        </p>
+        <p class="slds-hyphenate slds-m-vertical_small">
+            The results are visualized in several components including <code>lightning-tree-grid</code>. See the source code at <a target="_blank" href={gitSource}><code>force-app/main/default/lightningcomponents/gallery_lds_object_info</code></a>.
+        </p>
+        <br>
+        <lightning-input label="Object API Name" required placeholder="For example, Account" onchange={handleChange}></lightning-input>
+        <br>
+        <lightning-button variant="brand" label="Load Object Info" title="Load object info" onclick={handleLoadClick}></lightning-button>
+
+        <template if:true={objectInfo}>
+            <ul>
+                <li>
+                    <lightning-input disabled label="Label" value={objectInfo.label}></lightning-input>
+                </li>
+                <li>
+                    <lightning-input disabled label="Label Plural" value={objectInfo.labelPlural}></lightning-input>
+                </li>
+                <li>
+                    <lightning-input disabled type="checkbox" label="Createable" checked={objectInfo.createable}></lightning-input>
+                </li>
+                <li>
+                    <lightning-input disabled type="checkbox" label="Queryable" checked={objectInfo.queryable}></lightning-input>
+                </li>
+                <li>
+                    <lightning-input disabled type="checkbox" label="Updateable" checked={objectInfo.updateable}></lightning-input>
+                </li>
+                <li>
+                    <lightning-input disabled type="checkbox" label="Deleteable" checked={objectInfo.deletable}></lightning-input>
+                </li>
+                <li>
+                    <lightning-input disabled label="Number of Fields" value={fieldCount}></lightning-input>
+                </li>
+                <li>
+                    <lightning-input disabled label="Number of Child Relationships" value={childRelationshipCount}></lightning-input>
+                </li>
+                <li>
+                        <div class="slds-form-element__label">Formatted JSON</div>
+                        <lightning-tree-grid hide-checkbox-column columns={treeGridColumns} data={treeGridData} key-field="id">
+                        </lightning-tree-grid>
+                    </li>
+                <li>
+                    <lightning-textarea label="Raw JSON" value={objectInfoAsJson}></lightning-textarea>
+                </li>
+            </ul>
+        </template>
+        <template if:true={error}>
+            Error retrieving object info:
+            <code>{error}</code>
+        </template>
+    </c-card>
+</template>

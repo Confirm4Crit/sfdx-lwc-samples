@@ -1,0 +1,87 @@
+<template>
+    <c-page_header header="Accessing Data and Metadata with Lightning Data Service"></c-page_header>
+
+    <div class="slds-grid">
+        <div class="slds-col slds-size_2-of-3">
+            <c-card header="Instructions">
+                <p class="slds-m-vertical_large">
+                    Lightning Data Service (LDS) is a powerful yet easy-to-use service that allows you to retrieve data and metadata without Apex. When paired with Lightning Web Components support for directly referencing Salesforce objects and fields, loading and manipulating data has never been easier.
+                </p>
+                <p class="slds-m-vertical_large">
+                    In this lesson, we import references to Salesforce objects and fields and use Lightning Data Service to bind the component to live data.
+                </p>
+                <p class="slds-m-vertical_large slds-text-title_caps">
+                    <span>Step 1</span>
+                </p>
+                <p class="slds-m-vertical_large">
+                    Let's modify <strong>playground.js</strong> to import the Salesforce objects and fields. Replace the contents of <strong>playground.js</strong> with this code.
+                </p>
+                <c-code input>{codeStepOneA}</c-code>
+                <p class="slds-m-vertical_large">
+                    Now modify <strong>playground.html</strong> to reference the objects and fields. Update <strong>&lt;lightning-record-view-form&gt;</strong>, replacing the string literal <code>"Account"</code> with the imported schema.
+                </p>
+                <c-code input>{codeStepOneB}</c-code>
+                <p class="slds-m-vertical_large">
+                    Do the same for all <strong>&lt;lightning-output-field&gt;</strong>, like this.
+                </p>
+                <c-code input>{codeStepOneC}</c-code>
+                <p class="slds-m-vertical_large">
+                    Push your changes and observe the account card still displays the record.
+                </p>
+                <p class="slds-m-vertical_large">
+                    The direct references to Salesforce objects and fields ensure your component works now and in the future. Salesforce verifies that the objects and fields exist, prevents accidental deletion of the references, and even cascades any renamed objects and fields into your component's source code. Now that's an integrated platform!
+                </p>
+                <p class="slds-m-vertical_large">
+                    <i><b>Tip</b>: It's a best practice to import the Salesforce objects and fields in your components instead of using string literals.</i>
+                </p>
+                <p class="slds-m-vertical_large slds-text-title_caps">
+                    <span>Step 2</span>
+                </p>
+                <p class="slds-m-vertical_large">
+                    Now that we've imported references to Salesforce objects and fields, let's use Lightning Data Service to fetch the account name so we can display it with our custom style. Add the following imports to the top of <strong>playground.js</strong>.
+                </p>
+                <c-code input>{codeStepTwoA}</c-code>
+                <p class="slds-m-vertical_large">
+                    And add this code to the bottom of the class.
+                </p>
+                <c-code input>{codeStepTwoB}</c-code>
+                <p class="slds-m-vertical_large">
+                    <code>@wire(getRecord)</code> asynchronously fetches the record data and places it into the <code>record</code> object. The <code>nameValue</code> method returns the account name or an empty string if the account name isn't available yet.
+                </p>
+                <p class="slds-m-vertical_large slds-text-title_caps">
+                    <span>Step 3</span>
+                </p>
+                <p class="slds-m-vertical_large">
+                    Now that we know how and where the record data is saved, we can update <strong>playground.html</strong> to use expressions for the field data. Replace the two occurrences of <code>Tesla</code> with <code>{</code><code>nameValue}</code>. The updated file looks like this.
+                </p>
+                <c-code input>{codeStepThree}</c-code>
+                <p class="slds-m-vertical_large">
+                    Nice work! Now let's add some navigation links.
+                </p>
+
+                <div class="slds-m-vertical_large">
+                    <c-link tab-api-name="navigation" label="Next Lesson" variant="button"></c-link>
+                </div>
+            </c-card>
+
+            <c-card header="Lightning Data Service Explorer">
+                <p class="slds-m-vertical_large">
+                    You may have noticed that the record values have a specific structure like <code>record.data.fields</code>. Lightning Data Service provides data and metadata from the <a target="_blank" href="https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm">User Interface API</a>.
+                </p>
+                <p class="slds-m-vertical_large">
+                    The <a target="_blank" href="https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_resources_record_ui.htm"><code>record-ui</code> resource</a> provides data and metadata for one or more records. You can use it in your components with <code>@wire(getRecordUi)</code>. Use this Explorer tool to explore the data for the record you created above. You don't need to use the Explorer to complete the tutorial, but it's fun to poke around and explore the response from Lightning Data Service. For example, after you create an account, to see its name, click <b>records</b>, and then <b>fields</b>. Scroll to find the <b>Name</b> field and value.
+                </p>
+                <p class="slds-m-vertical_large">
+                  The Explorer is built with Lightning web components, notably <code>lightning-tree-grid</code>. Check out the source code at <a target="_blank" href={gitLdsRecordUi}><code>force-app/main/default/lightningcomponents/lds_record_ui</code></a>.
+               </p>
+                <c-lds_record_ui record-id={recordId}></c-lds_record_ui>
+            </c-card>
+        </div>
+
+        <div class="slds-col slds-size_1-of-3 slds-p-left_small">
+            <c-card header="Playground">
+                <c-playground record-id={recordId}></c-playground>
+            </c-card>
+        </div>
+    </div>
+</template>

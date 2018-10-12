@@ -1,0 +1,12 @@
+<template>
+    <p>
+        To fire event X or Y, enter a payload.
+    </p>
+    <br>
+
+    <lightning-input label="Event payload" placeholder="For example, Hello, world" onchange={handleChange}></lightning-input>
+    <br>
+
+    <lightning-button variant="brand" data-event-name="customeventx" label="Fire Event X" title="Fire custom event X" onclick={handleClick} class=" slds-m-right_small"></lightning-button>
+    <lightning-button variant="brand" data-event-name="customeventy" label="Fire Event Y" title="Fire custom event Y" onclick={handleClick}></lightning-button>
+</template>

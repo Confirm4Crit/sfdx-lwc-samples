@@ -1,0 +1,107 @@
+<template>
+    <article class="slds-card">
+        <div class="welcomeWrapper slds-m-vertical_xx-large">
+            <div class="slds-text-align_center">
+                <img src={noEventsUrl} aria-hidden="true">
+                <h3 class="slds-m-vertical_large slds-text-heading_large">Get Started with Lightning Web Components</h3>
+            </div>
+
+            <p class="slds-m-vertical_large">
+                    To get you off to a fast start with Lightning Web Components, we've created a collection of samples and resources, provided
+                    via the <a target="_blank" href={git}>Lightning Web Components Samples repo</a> on GitHub. Since you're reading this, you've succeeded in pushing
+                    the project to a scratch org and running the Lightning Web Components app in Lightning Experience. Congratulations, and welcome!
+            </p>
+
+            <h3 data-id="start" class="slds-m-vertical_large slds-text-heading_medium">Let's Get Started</h3>
+
+            <p class="slds-m-vertical_large">
+                This app is a tutorial. Start on the <c-link tab-api-name="lightning_components" label="Lightning Components"></c-link> tab and build a Lightning web component step by step. As you move through the tutorial, refer to the Lightning Web Components Developer Guide for more information about specific topics. The dev guide is available as a PDF in the Lightning Web Components Pilot <a href="https://org62.lightning.force.com/lightning/page/chatter/record/0F90M0000004r9GSAQ" target="_blank">Chatter group</a>.
+            </p>
+
+            <p class="slds-m-vertical_large">
+                To learn about how this sample app is structured, keep reading this page, and then go to the <c-link tab-api-name="lightning_components" label="Lightning Components"></c-link> tab to start the tutorial.
+            </p>
+
+            <h3 data-id="structure" class="slds-m-vertical_large slds-text-heading_medium">How the Samples Are Structured</h3>
+
+            <p class="slds-m-vertical_large">
+                This is a quick tour through the samples to help you understand a bit about how to use Lightning web components to develop Salesforce apps.
+            </p>
+
+            <p class="slds-m-vertical_large">
+                The core samples in this repository are all Lightning web components, and are located in the <a target="_blank" href={gitLightningComponents}><code>force-app/main/default/lightningcomponents</code></a> directory of the repo. That's the code worth studying in depth.
+            </p>
+            <p class="slds-m-vertical_large">
+                During the pilot, Lightning web components can't be added directly to Lightning Experience. So it's <i>also</i> worth studying how the various pieces fit together to make those samples available in Salesforce. We've created this app, Lightning Web Components, which weaves together many of the samples into a tutorial. Take the tutorial to learn, then take the tutorial's code apart to learn even more!
+            </p>
+
+            <h3 data-id="lex" class="slds-m-vertical_large slds-text-heading_medium">Lightning Web Components App</h3>
+
+            <p class="slds-m-vertical_large">
+                The Lightning Web Components app is a custom app that appears in the App Launcher. When active, it's the name of the app
+                (1) and a set of tabs (2). If you're not in that app now, please switch to it using the App Launcher.
+            </p>
+            <p class="slds-m-vertical_large">
+                <img src={appTabsUxUrl} aria-hidden="true" alt="Lightning Web Components Samples app user interface" />
+            </p>
+            <p class="slds-m-vertical_large">
+                The app definition is extremely simple, just a bit of <a target="_blank" href="https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_customapplication.htm">metadata</a>. You can find it in <a target="_blank" href={gitLwcAppMeta}><code>force-app/main/default/applications/LWC.app-meta.xml</code></a>.
+            </p>
+            <p class="slds-m-vertical_large">
+                The app is nothing more than some user interface details, and a collection of <a target="_blank" href="https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_tab.htm">tabs</a>. The tabs are defined in (you guessed
+                it) <a target="_blank" href={gitTabs}><code>force-app/main/default/tabs</code></a>. Each of the metadata files there defines a single tab.
+            </p>
+            <p class="slds-m-vertical_large">
+                <img src={samplesAppTabsFlowUrl} alt="One app references many tabs" width="400" />
+            </p>
+            <p class="slds-m-vertical_large">
+                The tabs are where things start to get a bit interesting. The tabs reference an Aura-based Lightning component. Here's
+                most of the Lightning Components tab definition.
+            </p>
+
+            <c-code>{codeLightningComponentsTab}</c-code>
+
+            <h3 data-id="wrappers" class="slds-m-vertical_large slds-text-heading_medium">Wrappers and Components</h3>
+
+            <p class="slds-m-vertical_large">
+                The Aura-based component names all end with "Wrapper", because that's what they do. During the pilot, Lightning web components must be enclosed,
+                or wrapped, by an Aura-based component in order to be used in Lightning Component tabs.
+            </p>
+            <p class="slds-m-vertical_large">
+                In the tab definition, the <code>&lt;auraComponent&gt;</code> element references an Aura-based Lightning component. Continuing our Lightning Components sample, the wrapper component
+                is defined in an <a target="_blank" href="https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_auradefinitionbundle.htm"><code>AuraDefinitionBundle</code></a> located at <a target="_blank" href={gitLightningComponentsWrapper}><code>force-app/main/default/aura/lightningComponentsWrapper</code></a>. It couldn't be more simple, and the markup should be familiar to anyone who has written an Aura-based Lightning
+                component.
+            </p>
+
+            <c-code>{codeLightningComponentsWrapper}</c-code>
+
+            <p class="slds-m-vertical_large">
+                The component implements the interface required to allow it to be used as a tab in Lightning Experience,
+                and then references another component, <code>c:lightning_components</code>, which is what displays the actual content visible when you click the <strong>Lightning Components</strong> tab in Lightning Experience.
+                What's kind of exciting, and also the reason for this brief tour, is that you can't tell from the markup
+                that <code>c:lightning_components</code> is a Lightning web component, rather than an Aura-based component. Now that you know, you can find its definition
+                in <a target="_blank" href={gitLightningComponent}><code>force-app/main/default/lightningcomponents/lightning_components</code></a>.
+            </p>
+            <p class="slds-m-vertical_large">
+                <img src={samplesLightningComponentFlowUrl} alt="Aura wraps Lightning web component" width="400" />
+            </p>
+
+            <h3 data-id="troubleshooting" class="slds-m-vertical_large slds-text-heading_medium">Pilot Notes and Troubleshooting Hints</h3>
+
+            <p class="slds-m-vertical_large">Before you move on to the next lesson, a couple of quick hints.</p>
+
+            <p class="slds-m-vertical_large">
+                You'll be using Salesforce DX, whether in VS Code or from the command line, to push your code changes to your scratch org. During the pilot, the only command that works with Lightning web components is <code>sfdx force:source:push</code>. You make changes locally, and then push them to a scratch org—one way only.
+            </p>
+            <p class="slds-m-vertical_large">
+                <b>Important:</b> If you make changes in your scratch org to other metadata types, for example, to configure a Lightning Page in App Builder, remember to <code>sfdx force:source:pull</code> those changes back to your local workspace. Otherwise you might overwrite those changes or run into conflicts the next time you <code>sfdx force:source:push</code>.
+            </p>
+
+            <p class="slds-m-vertical_large">Finally, if you get lost or stuck along the way, please use the <a href="https://org62.lightning.force.com/lightning/page/chatter/record/0F90M0000004r9GSAQ" target="_blank">Lightning Web Components Pilot Chatter group</a> to search for help or post your questions. We can't wait to hear from you!</p>
+
+            <div class="slds-m-vertical_large">
+                <c-link label="Next Lesson" tab-api-name="lightning_components" variant="button"></c-link>
+            </div>
+        </div>
+    </article>
+</template>

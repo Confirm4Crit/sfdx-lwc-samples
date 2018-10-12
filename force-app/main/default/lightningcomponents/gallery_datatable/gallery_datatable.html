@@ -1,0 +1,20 @@
+<template>
+    <c-card header="Datatable and Lightning Data Service @wire(getListUi)">
+        <p class="slds-hyphenate">
+            This sample shows the most recently used accounts by fetching data with <code>@wire(getListUi)</code> and displaying it in <code>lightning-datatable</code>. See the source code at <a target="_blank" href={gitSource}><code>force-app/main/default/lightningcomponents/gallery_datatable</code></a>.
+        </p>
+        <br>
+        <!-- rows of data have arrived -->
+        <template if:true={hasData}>
+            <lightning-datatable show-row-number-column data={data} columns={columns} key-field="id"></lightning-datatable>
+        </template>
+        <!-- no rows of data are available-->
+        <template if:true={hasNoData}>
+            <c-account_creator onnewrecord={handleNewRecord}></c-account_creator>
+        </template>
+        <!-- else: error -->
+        <template if:true={message}>
+            {message}
+        </template>
+    </c-card>
+</template>

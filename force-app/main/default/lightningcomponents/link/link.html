@@ -1,0 +1,8 @@
+<template>
+    <template if:true={isTextVariant}>
+        <a href={url} onclick={handleClick}>{label}</a>
+    </template>
+    <template if:true={isButtonVariant}>
+        <lightning-button variant="brand" onclick={handleClick} label={label}></lightning-button>
+    </template>
+</template>

@@ -1,0 +1,37 @@
+<aura:component implements="force:appHostable">
+    <aura:attribute name="gitSource" type="String" default="https://github.com/forcedotcom/sfdx-lwc-samples/tree/master/force-app/main/default/aura/galleryEventsAuraContainer" description="Github URL for this component" />
+    <aura:attribute name="receivedEvents" type="String" default="" description="Log of received X and Y events" />
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+    <div class="slds-grid">
+        <div class="slds-col slds-size_1-of-2">
+            <article class="slds-card slds-m-top_small">
+                <header class="slds-card__header">
+                    <h2 class="slds-text-heading_small">
+                        <b>Events</b>
+                    </h2>
+                </header>
+                <div class="slds-card__body slds-card__body_inner">
+                    <p class="slds-m-vertical_large slds-text-body_medium">
+                        Components communicate in two ways: attributes and events. Attributes allow a parent component to pass data to a child component. Events allow a child component to communicate to its parent component. Attributes flow down, events flow up.
+                    </p>
+                    <p class="slds-m-vertical_large slds-text-body_medium">
+                        Events in Lightning web components are built upon the <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events">Document Object Model (DOM) standard</a>, a collection of APIs and objects available in every browser. Lightning web components implement the <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget">EventTarget</a> interface, which allows them to fire, listen for, and handle fired events.
+                    </p>
+                    <p class="slds-m-vertical_large slds-text-body_medium">
+                        This sample shows how events work in a hierarchy of Aura and Lightning web components. See the source code at <a target="_blank" href="{!v.gitSource}"><code>force-app/main/default/aura/galleryEventsAuraContainer</code></a>.
+                    </p>
+                    <p class="slds-text-body_medium">
+                        This Aura component listens for events X and Y.
+                    </p>
+                    <br/>
+                    <!-- Log of received events -->
+                    <lightning:textarea disabled="true" label="Events received by Aura container" value="{!v.receivedEvents}" />
+                    <br/>
+                    <!-- Register listeners for events X and Y on the Lightning web component -->
+                    <c:gallery_events_container oncustomeventx="{!c.handleCustomEvent}" oncustomeventy="{!c.handleCustomEvent}" />
+                </div>
+            </article>
+        </div>
+    </div>
+</aura:component>

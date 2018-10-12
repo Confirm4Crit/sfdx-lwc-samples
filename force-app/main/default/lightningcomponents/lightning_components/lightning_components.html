@@ -1,0 +1,98 @@
+<template>
+    <c-page_header header="Using Base Lightning Components"></c-page_header>
+
+    <div class="slds-grid">
+        <div class="slds-col slds-size_2-of-3">
+            <c-card header="Instructions">
+                <p class="slds-m-vertical_large">
+                    Similar to other JavaScript frameworks, Lightning Web Components leverages a set of visual base components to speed up development. Use simple composition to easily build the UI, and then write standard JavaScript for your custom logic.
+                </p>
+                <p class="slds-m-vertical_large">
+                    This tutorial walks you through building an example component step-by-step. Open <strong>playground.html</strong> and add code to it as we go. Let's get started!
+                </p>
+                <p class="slds-m-vertical_large">
+                    The component already has some basic "Hello, Lightning Web Components" text. Let's start by changing the text to "Greetings, Lightning Web Components!" Go ahead and do that now by changing <strong>playground.html</strong> to the following.
+                </p>
+                <c-code input>{codeGreetingsWorld}</c-code>
+                <p class="slds-m-vertical_large">
+                    To see the changes, push your source code to your scratch org. Our VS Code integration makes this a breeze:
+                </p>
+                <div>
+                    <ul class="slds-list_dotted">
+                        <li>Press <strong><code>Command+Shift+P</code></strong> (Mac) or <strong><code>Ctrl+Shift+P</code></strong> (Win).</li>
+                        <li>Enter <strong><code>sfdx p</code></strong>.</li>
+                        <li>Select <strong><code>SFDX: Push Source to Default Scratch Org</code></strong>.</li>
+                    </ul>
+                </div>
+                <p class="slds-m-vertical_large">
+                    Remember this command because you'll need it after each step. Alternatively you can run this command from a terminal: <code>sfdx force:source:push</code>.
+                </p>
+                <p class="slds-m-vertical_large">
+                    Reload your browser and observe that you've just changed your first Lightning web component!
+                </p>
+                <p class="slds-m-vertical_large">
+                    <i><b>Tip</b>: Learn the Keyboard shortcut to open the <a href="https://code.visualstudio.com/docs/getstarted/userinterface" target="_blank">VS Code Command Palette</a>, because you'll be using it often. On Mac, it's Command+Shift+P. On Windows, it's Ctrl+Shift+P.</i>
+                </p>
+                <p class="slds-m-vertical_large">
+                    Now let's build something real, an account card component. We'll use a number of base Lightning components and <i>compose</i> our UI. When we're done, the component will look like this. You can also see a finished version at the <c-link tab-api-name="playground_finished" label="Playground"></c-link>.<br>
+                    <br>
+                    <img src={samplesLightningComponentCompleteUrl} alt="Component" width="500" />
+                </p>
+                <p class="slds-m-vertical_large">
+                    <span>We'll use these base Lightning web components to compose the account card. To customize them, we'll set their attributes.</span>
+                </p>
+                <div>
+                    <ul class="slds-list_dotted">
+                        <li><code>lightning-record-view-form</code></li>
+                        <li><code>lightning-output-field</code></li>
+                        <li><code>lightning-avatar</code></li>
+                        <li><code>lightning-formatted-text</code></li>
+                        <li><code>lightning-button-icon</code></li>
+                    </ul>
+                </div>
+                <br>
+                <p class="slds-m-vertical_large slds-text-title_caps">
+                    <span>Step 1</span>
+                </p>
+                <p class="slds-m-vertical_large">
+                    First, we'll create an account record to display in the card. To create the account you don't need to leave the Lightning Web Components samples app, you can use the following form, which we composed from Lightning web components! Simply enter values in the fields and click Create Account. (To check out the code that creates the account, see the source code at <a target="_blank" href={gitAccountCreator}><code>force-app/main/default/lightningcomponents/account_creator</code></a>.)
+                </p>
+                <div>
+                    <c-account_creator onnewrecord={handleNewRecord}></c-account_creator>
+                </div>
+                <p class="slds-m-vertical_large slds-text-title_caps">
+                    <span>Step 2</span>
+                </p>
+                <p class="slds-m-vertical_large">
+                    <span>Now that we've created a record, let's display it. Copy this code into <strong>playground.html</strong> then push your changes. Remember that command from above?</span>
+                </p>
+                <c-code input>{codeStepTwo}</c-code>
+                <p class="slds-m-vertical_large slds-text-title_caps">
+                    <span>Step 3</span>
+                </p>
+                <p class="slds-m-vertical_large">
+                    <span>Great! We have several fields from our record displayed. You may have noticed that SLDS is built into the base components. What's SLDS? SLDS is the <a target="_blank" href="http://lightningdesignsystem.com">Salesforce Lightning Design System</a> and contains all of the classes, design tokens, and design methodology used throughout Salesforce. Although SLDS is built into the components, we still need to style the rest of our component to make it look great. The good news is that SLDS can help with that too! Let's add some SLDS classes to help with the formatting. Replace <strong>playground.html</strong> with this code.</span>
+                </p>
+                <c-code input>{codeStepThree}</c-code>
+                <p class="slds-m-vertical_large slds-text-title_caps">
+                    <span>Step 4</span>
+                </p>
+                <p class="slds-m-vertical_large">
+                    <span>Because we want to display the account name in a non-standard fashion (and to show off some more base components), let's add those into the component. For now we'll add static values. Again replace the contents of <strong>playground.html</strong> with this code.</span>
+                </p>
+                <c-code input>{codeStepFour}</c-code>
+                <p class="slds-m-vertical_large">
+                    <span>Sweet! Now that we have the visual component the way we want, let's learn how to bind to data using Lightning Data Service and make the object and fields references more robust.</span>
+                </p>
+                <div class="slds-m-vertical_large">
+                    <c-link tab-api-name="lds" label="Next Lesson" variant="button"></c-link>
+                </div>
+            </c-card>
+        </div>
+        <div class="slds-col slds-size_1-of-3 slds-p-left_small">
+            <c-card header="Playground">
+                <c-playground record-id={recordId}></c-playground>
+            </c-card>
+        </div>
+    </div>
+</template>

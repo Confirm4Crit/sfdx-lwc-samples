@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <description>Learn and experiment with this collection of sample Lightning web components</description>
+    <formFactors>Large</formFactors>
+    <label>Lightning Web Components</label>
+    <navType>Standard</navType>
+    <tabs>welcome</tabs>
+    <tabs>lightning_components</tabs>
+    <tabs>lds</tabs>
+    <tabs>navigation</tabs>
+    <tabs>external_references</tabs>
+    <tabs>flexipage</tabs>
+    <tabs>testing</tabs>
+    <tabs>playground_finished</tabs>
+    <tabs>gallery</tabs>
+    <uiType>Lightning</uiType>
+</CustomApplication>

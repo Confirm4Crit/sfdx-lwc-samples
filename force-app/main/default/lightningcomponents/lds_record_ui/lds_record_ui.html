@@ -1,0 +1,23 @@
+<template>
+    <template if:true={recordUi}>
+        <ul>
+            <li>
+                <div class="slds-form-element__label">Formatted JSON</div>
+                <lightning-tree-grid hide-checkbox-column columns={treeGridColumns} data={treeGridData} key-field="id">
+                </lightning-tree-grid>
+            </li>
+            <li>
+                <lightning-textarea label="Raw JSON" value={recordUiAsJson}></lightning-textarea>
+            </li>
+        </ul>
+    </template>
+
+    <template if:true={error}>
+        Error retrieving record metadata and data:
+        <code>{error}</code>
+    </template>
+
+    <template if:false={hasRecordIds}>
+        <i>Create a record using the form above.</i>
+    </template>
+</template>

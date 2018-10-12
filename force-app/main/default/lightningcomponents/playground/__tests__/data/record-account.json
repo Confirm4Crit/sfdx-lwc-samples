@@ -1,0 +1,16 @@
+{
+  "apiName": "Account",
+  "childRelationships": {},
+  "eTag": "b1e67ad233fbbe46edfc9a82a156da8a",
+  "fields": {
+    "Name": {
+      "displayValue": null,
+      "value": "Tesla"
+    }
+  },
+  "id": "001R00000036lBAIAY",
+  "lastModifiedById": "005R0000000KBKvIAO",
+  "lastModifiedDate": "2018-08-07T03:53:34.000Z",
+  "recordTypeInfo": null,
+  "systemModstamp": "2018-08-07T03:53:42.000Z"
+}

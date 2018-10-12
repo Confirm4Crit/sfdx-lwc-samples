@@ -1,0 +1,22 @@
+<template>
+    <c-card header="Call Duration Summary" boundary>
+        <lightning-datatable data={durations} columns={durationColumns} key-field="label" hide-checkbox-column=true></lightning-datatable>
+    </c-card>
+
+    <c-card header="Log A Call" boundary>
+        <ul>
+            <li>
+                <lightning-input data-field-name="subject" label="Subject" value={form.subject} onchange={handleChange}></lightning-input>
+            </li>
+            <li>
+                <lightning-input data-field-name="comments" label="Comments" onchange={handleChange}></lightning-input>
+            </li>
+            <li>
+                <lightning-input data-field-name="duration" label="Duration (minutes)" value={form.duration} onchange={handleChange} type="number"></lightning-input>
+            </li>
+        </ul>
+        <br>
+        <lightning-button variant="brand" label="Log A Call" onclick={handleLogACall}></lightning-button>
+        <span class="slds-m-around_small status">{message}</span>
+    </c-card>
+</template>

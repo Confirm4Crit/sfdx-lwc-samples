@@ -1,0 +1,12 @@
+<template>
+    <lightning-record-edit-form object-api-name={accountObject} onsuccess={handleAccountCreated}>
+        <lightning-messages></lightning-messages>
+        <lightning-input-field field-name={nameField}></lightning-input-field>
+        <lightning-input-field field-name={websiteField}></lightning-input-field>
+        <lightning-input-field field-name={industryField}></lightning-input-field>
+        <lightning-input-field field-name={annualRevenueField}></lightning-input-field>
+        <br>
+        <lightning-button type="submit" variant="brand" label="Create Account"></lightning-button>
+        <span class="slds-m-around_small status">{createStatus}</span>
+    </lightning-record-edit-form>
+</template>

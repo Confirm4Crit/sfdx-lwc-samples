@@ -1,0 +1,37 @@
+<template>
+    <c-page_header header="Completed Playground Component"></c-page_header>
+
+    <div class="slds-grid">
+        <div class="slds-col slds-size_2-of-3">
+            <c-card header="Overview">
+                <p class="slds-m-vertical_large">
+                    This sample is the finished playground component.
+                </p>
+                <ul class="slds-list_dotted">
+                    <li>See the source code at <a target="_blank" href={gitSource}><code>force-app/main/default/lightningcomponents/playground_finished</code></a>.</li>
+                    <li>See the unit tests at <a target="_blank" href={gitSourceTests}><code>force-app/main/default/lightningcomponents/playground_finished/__tests__</code></a>.</li>
+                </ul>
+                <p class="slds-m-vertical_large">
+                    To create the playground component, start at the <c-link tab-api-name="lightning_components" label="Lightning Components"></c-link> tab and follow the steps.
+                </p>
+            </c-card>
+
+            <template if:false={hasRecordId}>
+                <c-card header="Create a New Record">
+                    <p class="slds-m-vertical_large">
+                        The playground component relies on data from a record in your org. Create a record using the form below.
+                    </p>
+                    <div>
+                        <c-account_creator onnewrecord={handleNewRecord}></c-account_creator>
+                    </div>
+                </c-card>
+            </template>
+        </div>
+
+        <div class="slds-col slds-size_1-of-3 slds-p-left_small">
+            <c-card header="Playground">
+                <c-playground_finished record-id={recordId}></c-playground_finished>
+            </c-card>
+        </div>
+    </div>
+</template>

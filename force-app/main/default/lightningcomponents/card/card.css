@@ -1,0 +1,7 @@
+:host:not(.slds-has-top-magnet){
+    display: block;
+    margin-bottom: .75rem;
+}
+header > h2{
+    font-weight: 700;
+}
