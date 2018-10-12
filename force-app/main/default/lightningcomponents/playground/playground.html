@@ -1,5 +1,33 @@
-<template>
+<!-- <template>
     <c-page_header header="Exercise Playground Component"></c-page_header>
 
     Greetings, Lightning Web Components!
+
+    
+</template> -->
+<template>
+    <div class="slds-card">
+        <lightning-record-view-form record-id={recordId} object-api-name="Account">
+            <div class="slds-grid slds-wrap slds-p-around_small">
+                <div class="slds-col slds-size_1-of-1 slds-p-vertical_xx-small">
+                    <div class="slds-media">
+                        <div class="slds-media__figure">
+                            <lightning-avatar variant="circle" size="large" fallback-icon-name="standard:account" alternative-text="Tesla"></lightning-avatar>
+                        </div>
+                        <div class="slds-media__body">
+                            <lightning-formatted-text value="Tesla" class="slds-text-heading_large"></lightning-formatted-text>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_2-of-4 slds-p-vertical_xx-small">
+                    <lightning-output-field field-name="Website"></lightning-output-field>
+                    <lightning-output-field field-name="Industry"></lightning-output-field>
+                </div>
+                <div class="slds-col slds-size_2-of-4 slds-p-vertical_xx-small">
+                    <lightning-output-field field-name="AnnualRevenue"></lightning-output-field>
+                    <lightning-output-field field-name="OwnerId"></lightning-output-field>
+                </div>
+            </div>
+        </lightning-record-view-form>
+    </div>
 </template>
