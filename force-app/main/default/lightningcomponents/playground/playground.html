@@ -12,10 +12,10 @@
                 <div class="slds-col slds-size_1-of-1 slds-p-vertical_xx-small">
                     <div class="slds-media">
                         <div class="slds-media__figure">
-                            <lightning-avatar variant="circle" size="large" fallback-icon-name="standard:account" alternative-text="Tesla"></lightning-avatar>
+                            <lightning-avatar variant="circle" size="large" fallback-icon-name="standard:account" alternative-text={nameValue}></lightning-avatar>
                         </div>
                         <div class="slds-media__body">
-                            <lightning-formatted-text value="Tesla" class="slds-text-heading_large"></lightning-formatted-text>
+                            <lightning-formatted-text value={nameValue} class="slds-text-heading_large"></lightning-formatted-text>
                         </div>
                     </div>
                 </div>
